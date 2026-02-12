@@ -1,8 +1,8 @@
 function Welcome() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dark-2">
-      <h1 className="text-5xl font-bold text-purple-200">
-        Welcome to Kwimy Installer! Nice!
+    <div className="flex flex-1 items-center justify-center bg-(--app-bg)">
+      <h1 className="text-5xl font-[grbold] text-(--app-magenta)">
+        Welcome to Kwimy Installer!
       </h1>
     </div>
   );

@@ -9,4 +9,77 @@
     --color-dark-4: #343137;
     --color-dark-5: #3f3b42;
     --color-txt-1: #bfb8dd;
+
+    /* Catppuccin Mocha */
+    --color-mocha-foreground: #cdd6f4;
+    --color-mocha-background: #1e1e2e;
+    --color-mocha-black: #45475a;
+    --color-mocha-red: #f38ba8;
+    --color-mocha-green: #a6e3a1;
+    --color-mocha-yellow: #f9e2af;
+    --color-mocha-blue: #89b4fa;
+    --color-mocha-magenta: #f5c2e7;
+    --color-mocha-cyan: #94e2d5;
+    --color-mocha-white: #a6adc8;
+
+    /* Tokio Nights Default */
+    --color-tokyo-default-foreground: #c0caf5;
+    --color-tokyo-default-background: #1a1b26;
+    --color-tokyo-default-black: #15161e;
+    --color-tokyo-default-red: #f7768e;
+    --color-tokyo-default-green: #9ece6a;
+    --color-tokyo-default-yellow: #e0af68;
+    --color-tokyo-default-blue: #7aa2f7;
+    --color-tokyo-default-magenta: #bb9af7;
+    --color-tokyo-default-cyan: #7dcfff;
+    --color-tokyo-default-white: #a9b1d6;
+}
+
+/* Extend Variants */
+@font-face {
+    font-family: "grbold";
+    src:
+        url("assets/fonts/gr-bold.woff2") format("woff2"),
+        url("assets/fonts/gr-bold.woff") format("woff"),
+        url("assets/fonts/gr-bold.svg#gr-bold") format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Theme bridge: semantic app tokens mapped from selected theme palette */
+:root,
+[data-theme="tokyo-night-default"] {
+    --app-bg: var(--color-tokyo-default-background);
+    --app-fg: var(--color-tokyo-default-foreground);
+    --app-black: var(--color-tokyo-default-black);
+    --app-red: var(--color-tokyo-default-red);
+    --app-green: var(--color-tokyo-default-green);
+    --app-yellow: var(--color-tokyo-default-yellow);
+    --app-blue: var(--color-tokyo-default-blue);
+    --app-magenta: var(--color-tokyo-default-magenta);
+    --app-cyan: var(--color-tokyo-default-cyan);
+    --app-white: var(--color-tokyo-default-white);
+    --app-surface: color-mix(in srgb, var(--app-bg) 88%, white 12%);
+    --app-border: color-mix(in srgb, var(--app-fg) 25%, transparent);
+}
+
+[data-theme="catppuccin-mocha"] {
+    --app-bg: var(--color-mocha-background);
+    --app-fg: var(--color-mocha-foreground);
+    --app-black: var(--color-mocha-black);
+    --app-red: var(--color-mocha-red);
+    --app-green: var(--color-mocha-green);
+    --app-yellow: var(--color-mocha-yellow);
+    --app-blue: var(--color-mocha-blue);
+    --app-magenta: var(--color-mocha-magenta);
+    --app-cyan: var(--color-mocha-cyan);
+    --app-white: var(--color-mocha-white);
+    --app-surface: color-mix(in srgb, var(--app-bg) 88%, white 12%);
+    --app-border: color-mix(in srgb, var(--app-fg) 25%, transparent);
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
 }
