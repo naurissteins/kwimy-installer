@@ -60,7 +60,7 @@
     --app-cyan: var(--color-tokyo-default-cyan);
     --app-white: var(--color-tokyo-default-white);
     --app-surface: color-mix(in srgb, var(--app-bg) 88%, white 2%);
-    --app-border: color-mix(in srgb, var(--app-fg) 2%, transparent);
+    --app-border: color-mix(in srgb, var(--app-fg) 5%, transparent);
 }
 
 [data-theme="catppuccin-mocha"] {
