@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@eslint/js": "9.39.1",
+    "@headlessui/react": "^2.2.9",
     "@tailwindcss/vite": "^4.1.18",
     "@tauri-apps/cli": "^2.10.0",
     "@types/react": "^19.2.14",

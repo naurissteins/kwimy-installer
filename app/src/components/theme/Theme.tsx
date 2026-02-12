@@ -1,4 +1,10 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
 
 export const THEMES = {
   tokyoNightDefault: "tokyo-night-default",
@@ -12,8 +18,26 @@ type ThemeContextValue = {
   setTheme: (nextTheme: ThemeValue) => void;
 };
 
+type ThemeOption = {
+  value: ThemeValue;
+  label: string;
+  color: string;
+};
+
 const STORAGE_KEY = "kwimy-theme";
 const DEFAULT_THEME: ThemeValue = THEMES.tokyoNightDefault;
+const THEME_OPTIONS: ThemeOption[] = [
+  {
+    value: THEMES.tokyoNightDefault,
+    label: "Tokyo Night Default",
+    color: "#7aa2f7",
+  },
+  {
+    value: THEMES.catppuccinMocha,
+    label: "Catppuccin Mocha",
+    color: "#89b4fa",
+  },
+];
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
@@ -58,19 +82,66 @@ export function useTheme() {
 
 function Theme() {
   const { theme, setTheme } = useTheme();
+  const currentThemeOption =
+    THEME_OPTIONS.find((option) => option.value === theme) ?? THEME_OPTIONS[0];
 
   return (
-    <label className="flex items-center gap-2 text-sm text-(--app-fg)">
-      Theme
-      <select
-        className="rounded-md border border-(--app-border) bg-(--app-surface) px-2 py-1 text-sm text-(--app-fg) outline-none"
-        onChange={(event) => setTheme(event.target.value as ThemeValue)}
-        value={theme}
-      >
-        <option value={THEMES.tokyoNightDefault}>Tokyo Night Default</option>
-        <option value={THEMES.catppuccinMocha}>Catppuccin Mocha</option>
-      </select>
-    </label>
+    <div className="flex items-center text-xs font-medium text-(--app-fg)">
+      <Listbox value={theme} onChange={setTheme}>
+        <div className="relative w-46">
+          <ListboxButton className="relative w-full rounded-md border border-(--app-border) bg-(--app-surface) py-2 pl-3 pr-8 text-left text-xs font-medium text-(--app-fg) transition hover:bg-white/5 focus:outline-none">
+            <span className="flex items-center gap-x-2">
+              <span
+                aria-hidden="true"
+                className="inline-block size-2.5 rounded-full"
+                style={{ backgroundColor: currentThemeOption.color }}
+              />
+              <span className="block truncate">{currentThemeOption.label}</span>
+            </span>
+            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-(--app-fg)/70">
+              <svg
+                aria-hidden="true"
+                className="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 9l4-4 4 4M16 15l-4 4-4-4"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </span>
+          </ListboxButton>
+          <ListboxOptions
+            transition
+            className="absolute z-30 mt-1 max-h-48 w-full overflow-auto rounded-md border border-(--app-border) bg-(--app-surface) py-1 text-left text-xs shadow-lg ring-1 ring-black/5 focus:outline-none data-closed:data-leave:opacity-0 data-leave:transition data-leave:duration-100 data-leave:ease-in"
+          >
+            {THEME_OPTIONS.map((option) => (
+              <ListboxOption
+                key={option.value}
+                className="group relative cursor-pointer select-none py-2 pl-3 pr-3 text-xs font-medium text-(--app-fg) data-focus:bg-white/5"
+                value={option.value}
+              >
+                <span className="flex items-center gap-x-2">
+                  <span
+                    aria-hidden="true"
+                    className="inline-block size-2.5 rounded-full"
+                    style={{ backgroundColor: option.color }}
+                  />
+                  <span className="block truncate group-data-selected:font-semibold">
+                    {option.label}
+                  </span>
+                </span>
+              </ListboxOption>
+            ))}
+          </ListboxOptions>
+        </div>
+      </Listbox>
+    </div>
   );
 }
 

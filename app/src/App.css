@@ -59,8 +59,8 @@
     --app-magenta: var(--color-tokyo-default-magenta);
     --app-cyan: var(--color-tokyo-default-cyan);
     --app-white: var(--color-tokyo-default-white);
-    --app-surface: color-mix(in srgb, var(--app-bg) 88%, white 12%);
-    --app-border: color-mix(in srgb, var(--app-fg) 25%, transparent);
+    --app-surface: color-mix(in srgb, var(--app-bg) 88%, white 2%);
+    --app-border: color-mix(in srgb, var(--app-fg) 2%, transparent);
 }
 
 [data-theme="catppuccin-mocha"] {
@@ -74,8 +74,8 @@
     --app-magenta: var(--color-mocha-magenta);
     --app-cyan: var(--color-mocha-cyan);
     --app-white: var(--color-mocha-white);
-    --app-surface: color-mix(in srgb, var(--app-bg) 88%, white 12%);
-    --app-border: color-mix(in srgb, var(--app-fg) 25%, transparent);
+    --app-surface: color-mix(in srgb, var(--app-bg) 88%, white 2%);
+    --app-border: color-mix(in srgb, var(--app-fg) 5%, transparent);
 }
 
 html,
