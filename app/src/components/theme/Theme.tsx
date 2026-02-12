@@ -35,7 +35,7 @@ const THEME_OPTIONS: ThemeOption[] = [
   {
     value: THEMES.catppuccinMocha,
     label: "Catppuccin Mocha",
-    color: "#89b4fa",
+    color: "#f5c2e7",
   },
 ];
 
@@ -89,7 +89,7 @@ function Theme() {
     <div className="flex items-center text-xs font-medium text-(--app-fg)">
       <Listbox value={theme} onChange={setTheme}>
         <div className="relative w-46">
-          <ListboxButton className="relative w-full rounded-md border border-(--app-border) bg-(--app-surface) py-2 pl-3 pr-8 text-left text-xs font-medium text-(--app-fg) transition hover:bg-white/5 focus:outline-none">
+          <ListboxButton className="relative w-full rounded-md border border-(--app-border) bg-(--app-surface) py-2 pl-3 pr-8 text-left text-xs font-medium text-(--app-fg) transition hover:bg-white/5 focus:outline-none cursor-pointer">
             <span className="flex items-center gap-x-2">
               <span
                 aria-hidden="true"
